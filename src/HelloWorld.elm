@@ -1,3 +1,4 @@
-import Html
+import Html exposing (text)
 
-main = Html.text "Hello world"
+main =
+  text "Hello world"
