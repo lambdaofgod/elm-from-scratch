@@ -3,6 +3,7 @@ import Math.Vector2 exposing (..)
 import Chart exposing (Datum)
 
 type alias Point2D = Vec2
+type alias RegressionCoeffs = {slope: Float, intercept: Float}
 
 make_point_2d = vec2
 
@@ -25,14 +26,14 @@ mean points =
 
 
 -- linear regression helpers
-get_linear_regression_coeffs: List Point2D -> (Float, Float)
+get_linear_regression_coeffs: List Point2D -> RegressionCoeffs
 get_linear_regression_coeffs points =
   let
     mean_point = mean points
     centered_points = List.map (add (minus mean_point)) points
     norm = List.foldr (\point acc -> getX point ^ 2 + acc) 0 centered_points
     corr = List.foldr (\point acc -> (getX point) * (getY point) + acc) 0 centered_points
-    beta = corr / norm
-    intercept = getY mean_point + beta * getX mean_point
+    slope = corr / norm
+    intercept = getY mean_point - slope * getX mean_point
   in
-    (beta, intercept)
+    {slope = slope, intercept = intercept}
