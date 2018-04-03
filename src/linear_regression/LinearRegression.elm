@@ -13,9 +13,6 @@ zero = vec2 0 0
 minus : Point2D -> Point2D
 minus point = sub zero point
 
-point_to_datum : Point2D -> Datum msg
-point_to_datum point = (getX point, getY point, [])
-
 mean : List Point2D -> Point2D
 mean points =
   let
@@ -34,6 +31,6 @@ get_linear_regression_coeffs points =
     norm = List.foldr (\point acc -> getX point ^ 2 + acc) 0 centered_points
     corr = List.foldr (\point acc -> (getX point) * (getY point) + acc) 0 centered_points
     slope = corr / norm
-    intercept = getY mean_point - slope * getX mean_point
+    intercept = (getY mean_point) - (slope * getX mean_point)
   in
     {slope = slope, intercept = intercept}
