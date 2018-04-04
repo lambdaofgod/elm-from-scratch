@@ -30,3 +30,14 @@ elm-make src/MoreInvolved.elm --output html_and_js/more_involved.js
 ```
 
 Will compile `MoreInvolved` to appropriate javascript code. This script can be then accessed, like in [html_and_js/index.html](https://github.com/lambdaofgod/elm-from-scratch/blob/master/html_and_js/index.html).
+
+
+#### Cool features
+
+In Elm it's considered a good practice to declare each function (explicitly write down its types).
+
+Elm's compiler has a feature that can find out whether the declarations are there (and not only that).
+
+```buildoutcfg
+elm-make MyFile.elm --warn
+```

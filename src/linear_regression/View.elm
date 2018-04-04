@@ -40,6 +40,8 @@ plot_data points =
     yScale = (\y -> 400 - 100 * y)
   }
 
+
+draw_scatterplot : ChartProps msg -> Svg msg
 draw_scatterplot scatterplot_data =
   scatterPlot
     [
@@ -48,8 +50,9 @@ draw_scatterplot scatterplot_data =
     ]
     scatterplot_data
 
+draw_line_chart : ChartProps msg -> Svg msg
 draw_line_chart regression_data =
-    lineChart
+  lineChart
     [
       LineChart.color "#7E94C7",
       LineChart.width "4"
@@ -58,23 +61,23 @@ draw_line_chart regression_data =
 
 view : Model -> Html Msg
 view model =
-    let
-      regression_data = plot_data (regression_line_points model.regression_coeffs)
-      scatterplot_data = plot_data model.points
-    in
-      div [] [
-            input [ placeholder "x", onInput (\x -> x |> parse_float_with_default 0.0 |> UpdateX)] [],
-            input [ placeholder "y", onInput (\y -> y |> parse_float_with_default 0.0 |> UpdateY)] [],
-            button [ onClick AddPoint] [ text "Add point"],
-            button [ onClick RenderLine] [ text "Calculate linear regression coefficients"],
-            svg
-              [
-                Svg.Attributes.width "1200",
-                Svg.Attributes.height "800"
-              ]
-              [
-                draw_scatterplot scatterplot_data,
-                draw_line_chart regression_data
-              ]
-            ]
+  let
+    regression_data = plot_data (regression_line_points model.regression_coeffs)
+    scatterplot_data = plot_data model.points
+  in
+    div [] [
+      input [ placeholder "x", onInput (\x -> x |> parse_float_with_default 0.0 |> UpdateX)] [],
+      input [ placeholder "y", onInput (\y -> y |> parse_float_with_default 0.0 |> UpdateY)] [],
+      button [ onClick AddPoint] [ text "Add point"],
+      button [ onClick RenderLine] [ text "Calculate linear regression coefficients"],
+      svg
+        [
+          Svg.Attributes.width "1200",
+          Svg.Attributes.height "800"
+        ]
+        [
+          draw_scatterplot scatterplot_data,
+          draw_line_chart regression_data
+        ]
+      ]
 

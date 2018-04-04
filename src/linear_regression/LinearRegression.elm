@@ -1,10 +1,11 @@
 module LinearRegression exposing (..)
 import Math.Vector2 exposing (..)
-import Chart exposing (Datum)
+
 
 type alias Point2D = Vec2
 type alias RegressionCoeffs = {slope: Float, intercept: Float}
 
+make_point_2d : Float -> Float -> Vec2
 make_point_2d = vec2
 
 zero : Point2D
@@ -22,7 +23,7 @@ mean points =
     scale (1 / (toFloat len)) sum
 
 
--- linear regression helpers
+--linear regression helpers
 get_linear_regression_coeffs: List Point2D -> RegressionCoeffs
 get_linear_regression_coeffs points =
   let
