@@ -31,13 +31,13 @@ elm-make src/MoreInvolved.elm --output html_and_js/more_involved.js
 
 Will compile `MoreInvolved` to appropriate javascript code. This script can be then accessed, like in [html_and_js/index.html](https://github.com/lambdaofgod/elm-from-scratch/blob/master/html_and_js/index.html).
 
+### Testing
 
-#### Cool features
+To run tests you'd need to install `elm-test` npm and elm packages.
 
-In Elm it's considered a good practice to declare each function (explicitly write down its types).
-
-Elm's compiler has a feature that can find out whether the declarations are there (and not only that).
-
-```buildoutcfg
-elm-make MyFile.elm --warn
 ```
+npm install -g elm-test
+elm-package install elm-community/elm-test
+```
+
+If you don't have any tests you can use `elm-test init` to setup appropriate directory (it's called *tests* by default) and even write an example stub test.

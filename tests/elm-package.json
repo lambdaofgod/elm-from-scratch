@@ -1,15 +1,17 @@
 {
-    "version": "0.1.0",
-    "summary": "What you'll need to get started with Elm and it's Intellij IDEA plugin",
+    "version": "1.0.0",
+    "summary": "Test Suites",
     "repository": "https://github.com/lambdaofgod/elm-from-scratch.git",
     "license": "BSD3",
     "source-directories": [
-        ".",
-        "./src",
-        "./src/linear_regression"
+        "..",
+        "../src",
+        "../src/linear_regression",
+        "."
     ],
     "exposed-modules": [],
     "dependencies": {
+        "eeue56/elm-html-test": "5.2.0 <= v < 6.0.0",
         "elm-community/elm-test": "4.2.0 <= v < 5.0.0",
         "elm-community/linear-algebra": "3.1.1 <= v < 4.0.0",
         "elm-lang/core": "5.1.1 <= v < 6.0.0",
